@@ -58,7 +58,6 @@ func main() {
 			CheckOrigin: func(r *http.Request) bool {
 				return true
 			},
-			Subprotocols: []string{"graphql-ws"},
 		},
 	})
 	srv.Use(extension.Introspection{})
