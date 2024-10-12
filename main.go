@@ -54,12 +54,11 @@ func main() {
 	srv.AddTransport(transport.POST{})
 	srv.AddTransport(transport.Websocket{
 		InitFunc: graph.AuthMiddlewareWebsocket,
-
 		Upgrader: websocket.Upgrader{
-
 			CheckOrigin: func(r *http.Request) bool {
 				return true
 			},
+			Subprotocols: []string{"graphql-ws"},
 		},
 	})
 	srv.Use(extension.Introspection{})
